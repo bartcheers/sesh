@@ -62,13 +62,13 @@ import { query } from 'sesh-cache-helper'
 import { prisma } from './prismaClient'
 
 export const getUserById = query(
-	async (userId: string) => {
-		const user = await prisma.user.findUnique({
-			where: { id: userId },
-		})
-		return user
-	},
-	(userId) => `getUserById-${userId}`
+  async (userId: string) => {
+    const user = await prisma.user.findUnique({
+      where: { id: userId },
+    })
+    return user
+  },
+  (userId) => `getUserById-${userId}`
 )
 ```
 
@@ -103,14 +103,14 @@ import { query } from 'sesh-cache-helper'
 import { prisma } from './prismaClient'
 
 export const getUserById = query(
-	async (userId: string) => {
-		// Directly query the database using Prisma
-		const user = await prisma.user.findUnique({
-			where: { id: userId },
-		})
-		return user
-	},
-	(userId) => `getUserById-${userId}`
+  async (userId: string) => {
+    // Directly query the database using Prisma
+    const user = await prisma.user.findUnique({
+      where: { id: userId },
+    })
+    return user
+  },
+  (userId) => `getUserById-${userId}`
 )
 ```
 
@@ -121,18 +121,18 @@ export const getUserById = query(
 import { getUserById } from '../../../queries'
 
 export default async function UserPage({ params }) {
-	const user = await getUserById(params.userId)
+  const user = await getUserById(params.userId)
 
-	if (!user) {
-		return <div>User not found.</div>
-	}
+  if (!user) {
+    return <div>User not found.</div>
+  }
 
-	return (
-		<div>
-			<h1>{user.name}</h1>
-			<p>Email: {user.email}</p>
-		</div>
-	)
+  return (
+    <div>
+      <h1>{user.name}</h1>
+      <p>Email: {user.email}</p>
+    </div>
+  )
 }
 ```
 
@@ -146,13 +146,13 @@ export default async function UserPage({ params }) {
 import { useBrowserSessionId } from 'sesh-cache-helper'
 
 export default function RootLayout({ children }) {
-	useBrowserSessionId()
+  useBrowserSessionId()
 
-	return (
-		<html>
-			<body>{children}</body>
-		</html>
-	)
+  return (
+    <html>
+      <body>{children}</body>
+    </html>
+  )
 }
 ```
 
@@ -167,13 +167,13 @@ Usage:
 import { useBrowserSessionId } from 'sesh-cache-helper'
 
 export default function RootLayout({ children }) {
-	useBrowserSessionId({ hasDisabledCookies: true }) // Disable cookies
+  useBrowserSessionId({ hasDisabledCookies: true }) // Disable cookies
 
-	return (
-		<html>
-			<body>{children}</body>
-		</html>
-	)
+  return (
+    <html>
+      <body>{children}</body>
+    </html>
+  )
 }
 ```
 
@@ -219,13 +219,13 @@ import { query } from 'sesh-cache-helper'
 import { prisma } from './prismaClient'
 
 export const getPostsByUser = query(
-	async (userId: string) => {
-		const posts = await prisma.post.findMany({
-			where: { authorId: userId },
-		})
-		return posts
-	},
-	(userId) => `getPostsByUser-${userId}`
+  async (userId: string) => {
+    const posts = await prisma.post.findMany({
+      where: { authorId: userId },
+    })
+    return posts
+  },
+  (userId) => `getPostsByUser-${userId}`
 )
 ```
 
@@ -236,23 +236,23 @@ Using in a Server Component:
 import { getPostsByUser } from '../../../../lib/queries'
 
 export default async function UserPostsPage({ params }) {
-	const posts = await getPostsByUser(params.userId)
+  const posts = await getPostsByUser(params.userId)
 
-	return (
-		<div>
-			<h1>Posts by User {params.userId}</h1>
-			{posts.length === 0 ? (
-				<p>No posts found.</p>
-			) : (
-				posts.map((post) => (
-					<article key={post.id}>
-						<h2>{post.title}</h2>
-						<p>{post.content}</p>
-					</article>
-				))
-			)}
-		</div>
-	)
+  return (
+    <div>
+      <h1>Posts by User {params.userId}</h1>
+      {posts.length === 0 ? (
+        <p>No posts found.</p>
+      ) : (
+        posts.map((post) => (
+          <article key={post.id}>
+            <h2>{post.title}</h2>
+            <p>{post.content}</p>
+          </article>
+        ))
+      )}
+    </div>
+  )
 }
 ```
 
@@ -283,14 +283,14 @@ Using in a Server Component:
 import { getExternalData } from '../../../lib/queries'
 
 export default async function DataPage({ params }) {
-	const data = await getExternalData(params.endpoint)
+  const data = await getExternalData(params.endpoint)
 
-	return (
-		<div>
-			<h1>Data for {params.endpoint}</h1>
-			<pre>{JSON.stringify(data, null, 2)}</pre>
-		</div>
-	)
+  return (
+    <div>
+      <h1>Data for {params.endpoint}</h1>
+      <pre>{JSON.stringify(data, null, 2)}</pre>
+    </div>
+  )
 }
 ```
 
