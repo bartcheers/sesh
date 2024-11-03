@@ -1,0 +1,33 @@
+{
+  "name": "sesh-cache-helper",
+  "version": "1.0.0",
+  "description": "Simplified Server-Side Caching for Next.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist/**/*"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "prepare": "pnpm run build"
+  },
+  "keywords": [
+    "nextjs",
+    "caching",
+    "server-side",
+    "react",
+    "cache",
+    "helper"
+  ],
+  "author": "Bart Proost <jgbproost@gmail.com>",
+  "license": "MIT",
+  "peerDependencies": {
+    "react": "^18.0.0",
+    "next": "^13.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^18.0.0",
+    "@types/react": "^18.0.0",
+    "typescript": "^4.0.0"
+  }
+}
