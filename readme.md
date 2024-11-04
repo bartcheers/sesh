@@ -305,7 +305,7 @@ export default async function DataPage({ params }) {
 `unstable_cache` is currently the only way to cache data fetching in Next.js server components
 without creating endpoints or using experimental features like Server Actions for fetching (which is
 discouraged). While `unstable_cache` is experimental and may change in future Next.js versions, Sesh
-provides a practical solution until a stable API is available. We are actively monitoring Next.js
+provides a practical solution until a stable API is available. I am actively monitoring Next.js
 updates and plan to adapt Sesh accordingly.
 
 2. Why create Sesh when there are existing solutions like SWR or React Query?
@@ -324,13 +324,13 @@ benefits of preventing stale data and data leakage outweigh the negligible overh
 
 The session IDs are opaque tokens containing no sensitive information and are used solely for
 scoping the cache. They do not expose any user data. However, to comply with European cookie laws,
-Sesh can be configured to use sessionStorage as a fallback when cookies are disabled, and you can
-implement consent mechanisms if necessary.
+Sesh can bypass `unstable_cache` as a fallback when cookies are disabled, and you can implement
+consent mechanisms if necessary.
 
 5. What happens when Next.js releases official support for caching in server components?
 
-We are committed to keeping Sesh up-to-date with the latest Next.js developments. When a stable
-caching API becomes available, we plan to update Sesh to leverage it or provide migration paths for
+I am committed to keeping Sesh up-to-date with the latest Next.js developments. When a stable
+caching API becomes available, i plan to update Sesh to leverage it or provide migration paths for
 users.
 
 6. Does Sesh add unnecessary complexity to my project?
@@ -347,32 +347,31 @@ Sesh allows you to fetch data directly in server components without these additi
 
 8. How does Sesh handle environments where cookies are disabled?
 
-If cookies are disabled, Sesh can fallback to using sessionStorage to store the session ID. This
-ensures that the application still functions correctly, and the cache remains scoped to the browser
-session. The useBrowserSessionId hook has been updated to handle this scenario.
+If cookies are disabled, Sesh will bypass `unstable_cache`. This ensures that the application still
+functions correctly, but the application will feel less performant.
 
 9. Is Sesh compliant with European cookie laws (GDPR and ePrivacy Directive)?
 
 Sesh can be configured to comply with European regulations. Since the session ID is essential for
 providing the service (scoping the cache to prevent data leakage), it may fall under the "strictly
-necessary" exemption. However, we recommend implementing a consent mechanism or consulting legal
+necessary" exemption. However, I recommend implementing a consent mechanism or consulting legal
 advice to ensure compliance.
 
 10. Is this project actively maintained and under what license is it released?
 
-Yes, Sesh is actively maintained, and we welcome community contributions. The project is released
+Yes, Sesh is actively maintained, and community contributions are welcome. The project is released
 under the MIT License, allowing for flexible use in both open-source and proprietary projects.
 
 11. Have you used Sesh in production? What are the results?
 
 Yes, I've been using Sesh in production on playtennisla.com for over two months. It has simplified
 data fetching in server components and improved performance by reducing redundant database queries
-without any significant issues.
+without any issues.
 
 12. Can I contribute to Sesh or suggest improvements?
 
-Absolutely! We encourage contributions, feedback, and suggestions. Feel free to open issues or pull
-requests on the GitHub repository (replace with your actual link).
+Absolutely! Contributions, feedback, and suggestions are encouraged. Feel free to open issues or
+pull requests on the GitHub repository.
 
 ## License
 
