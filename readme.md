@@ -3,6 +3,10 @@
 Simplified Server-Side Caching for Next.js - A lightweight utility that safely and efficiently
 caches server-side queries using browser session scoping and deduplication.
 
+## Demo
+
+[![Watch the demo](https://markdown-videos-api.jorgenkh.no/youtube/gkS55BiAuUY)](https://youtu.be/gkS55BiAuUY)
+
 ## Table of Contents
 
 - [Introduction](#introduction)
